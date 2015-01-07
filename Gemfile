@@ -14,6 +14,8 @@ gem 'devise'
 gem 'neat'
 gem 'cancancan'
 
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
