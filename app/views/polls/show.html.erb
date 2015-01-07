@@ -1,0 +1,11 @@
+<h3>
+  <%= @poll.question %>
+</h3>
+
+<ul>
+  <% @poll.responses.each do |response| %>
+    <li>
+      <%= response.content %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,41 @@
+<%= form_for @poll do |p| %>
+  <fieldset class="question">
+    <%= p.label :question %>
+    <%= p.text_field :question, autofocus: true %>
+  </fieldset>
+  
+  <%= p.fields_for :responses do |a| %>
+    <div class="responses">
+      <fieldset class="response">
+        <%= a.label :content, "Response" %>
+        <%= a.text_field :content %>
+      </fieldset>
+    </div>
+  <% end %>
+  
+  <%= button_tag('Create Poll', type: 'submit') %>
+<% end %>
+
+<script>
+  $('form').on('change', '.response:last-child input', function(e) {
+    var $template = $(this).parent();
+    var templateId = $template.find('input').attr('name').match(/\d+/);
+    
+    var $nextResponse = $template.clone().css('display', 'none');
+    
+    var $nextLabel = $nextResponse.find('label');
+    var $nextInput = $nextResponse.find('input');
+    var nextId = (parseInt(templateId) + 1).toString()
+
+    $nextLabel.attr( 'for', $nextLabel.attr('for').replace(templateId, nextId) );
+    
+    $nextInput.val('');
+    $nextInput.attr( 'name', $nextInput.attr('name').replace(templateId, nextId) );
+    $nextInput.attr( 'id', $nextInput.attr('id').replace(templateId, nextId) );
+    
+    $('.responses').append($nextResponse);
+    $nextResponse.slideDown(function () {
+      $(this).find('input').focus();
+    });
+  });
+</script>
