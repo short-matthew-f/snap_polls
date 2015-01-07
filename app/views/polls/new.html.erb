@@ -1,4 +1,4 @@
-<%= form_for @poll do |p| %>
+<%= form_for @poll, html: { autocomplete: "off" } do |p| %>
   <fieldset class="question">
     <%= p.label :question %>
     <%= p.text_field :question, autofocus: true %>
