@@ -19,11 +19,15 @@
         <div class="result <%= "correct" if response.correct %>">
           <div class="response clearfix">
             <span class="pull-left">
-              <%= response.content %>
+              <%= response.content %> 
+              
             </span>
-            <% if response.correct %>
-              <i class="fa fa-birthday-cake pull-right"></i>      
-            <% end %>
+            <span class="pull-right">
+              <small>[<%= pluralize response_count, "student" %>]</small>
+              <% if response.correct %>
+                <i class="fa fa-birthday-cake"></i>      
+              <% end %>
+            </span>
           </div>
           
           <div class="strength" data-percent="<%= percent %>">

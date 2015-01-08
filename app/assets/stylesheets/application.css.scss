@@ -114,7 +114,7 @@ section.results {
     font-size: 24px;
     line-height: 24px;
     
-    background: lighten(steelblue, 5%);
+    background: lighten(steelblue, 20%);
     
     &.correct {
       background: white;
@@ -123,10 +123,17 @@ section.results {
     
     .response {
       padding: 16px 12px 8px 12px;
+      
+      small {
+        font-size: 16px;
+        color: darken(steelblue, 30%);
+        margin-left: 12px;
+      }
       span, i {
         display: inline-block;
       }
       i {
+        margin-left: 8px;
         color: goldenrod;
       }
     }
