@@ -1,4 +1,7 @@
 class PollsController < ApplicationController
+  before_action :authenticate_user!
+  
+  load_and_authorize_resource
   
   def new
     @poll = Poll.new
@@ -11,40 +14,29 @@ class PollsController < ApplicationController
     if @poll.save
       redirect_to @poll
     else
+      flash.now[:alert] = @poll.errors.full_messages.to_sentence
+      @poll.responses.build
       render :new
     end
   end
   
   def show
     @poll = Poll.includes(:responses).find(params[:id])
+    @vote = Vote.new
+    
+    if current_user.has_voted_on?(@poll) || !@poll.active?
+      render :results
+    else
+      render :complete
+    end
   end
   
   def active
     @polls = Poll.where(active: true)
-    
-    render :index
   end
   
   def completed
-    
-  end
-  
-  def vote
-    @poll = Poll.includes(:responses).find(params[:id])
-  end
-  
-  def open
-    @poll = Poll.find(params[:id])
-    @poll.update_attribute(active: true)
-    
-    redirect_to show_poll_url(@poll)
-  end
-  
-  def close
-    @poll = Poll.find(params[:id])
-    @poll.update(active: false)
-    
-    redirect_to show_poll_url(@poll)
+    @polls = Poll.where(active: false)
   end
   
   private

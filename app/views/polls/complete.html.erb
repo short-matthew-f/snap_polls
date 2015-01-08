@@ -1,0 +1,18 @@
+<h1>
+  <%= @poll.question %>
+</h1>
+
+<%= form_for @vote do |v| %>
+  <fieldset class="vote">
+    <% @poll.responses.each do |response| %>
+      <%= v.radio_button :response_id, response.id %>
+      <%= v.label :response_id, response.content, value: response.id, class: "button full-width" %>
+    <% end %>
+  </fieldset>
+<% end %>
+
+<script>
+  $('form').on('change', function(event) {
+    $(this).submit();
+  })
+</script>

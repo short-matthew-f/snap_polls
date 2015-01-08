@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (6.0.0)
     bcrypt (3.1.9)
     binding_of_caller (0.7.2)
@@ -68,6 +71,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.2)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -174,10 +179,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   byebug
   cancancan
   coffee-rails (~> 4.1.0)
   devise
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   neat

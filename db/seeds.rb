@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.find_or_create_by(email: "wonka@generalassemb.ly").tap do |instructor|
+  instructor.update_attributes  password: "wdioompaloompa", instructor: true
+end
