@@ -21,12 +21,14 @@ class PollsController < ApplicationController
   end
   
   def show
-    @poll = Poll.includes(:responses).find(params[:id])
-    @vote = Vote.new
-    
     if current_user.has_voted_on?(@poll) || !@poll.active?
-      render :results
+      @poll = Poll.includes(responses: :votes).find(params[:id])
+      @responses = @poll.responses
+      @vote_count = @responses.map(&:votes).map(&:to_a).flatten.count
     else
+      @poll = Poll.includes(:responses).find(params[:id])
+      @vote = Vote.new
+      
       render :complete
     end
   end
