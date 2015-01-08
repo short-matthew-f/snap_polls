@@ -18,7 +18,7 @@
 @import "bourbon";
 @import "neat";
 
-body, main, fieldset, label, input, button, div, p, h1, h2, h3, h4, h5 {
+body, main, fieldset, label, input, button, div, p, h1, h2, h3, h4, h5, i, span {
   margin: 0;
   border: 0;
   padding: 0;
@@ -102,39 +102,39 @@ h1 {
 
 section.results {
   margin-top: 24px;
+  
   h2 {
+    font-size: 32px;
     margin-bottom: 12px;
   }
   
   .result {
-    padding-top: 8px;
     margin-bottom: 24px;
+    
+    font-size: 24px;
+    line-height: 24px;
+    
     background: lighten(steelblue, 5%);
     
     &.correct {
       background: white;
       color: black;
     }
-  }
-  
-  .response {
-    font-size: 24px;
-    margin: 0 8px;
     
+    .response {
+      padding: 16px 12px 8px 12px;
+      span, i {
+        display: inline-block;
+      }
+      i {
+        color: goldenrod;
+      }
+    }
     
-  }
-  
-  .strength {
-    margin-top: 4px;
-    height: 12px;
-    background: green;
-    width: 0;
-  }
-  
-  i {
-    width: 30px;
-    text-align: right;
-    margin-left: 10px;
+    .strength {
+      height: 8px;
+      width: 0;
+    }
   }
 }
 

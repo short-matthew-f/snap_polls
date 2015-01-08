@@ -17,12 +17,15 @@
       <% percent = (@vote_count == 0 ? 0 : (100 * response_count) / @vote_count) %>
     
         <div class="result <%= "correct" if response.correct %>">
-          <div class="response">
-            <%= response.content %>
+          <div class="response clearfix">
+            <span class="pull-left">
+              <%= response.content %>
+            </span>
             <% if response.correct %>
               <i class="fa fa-birthday-cake pull-right"></i>      
             <% end %>
           </div>
+          
           <div class="strength" data-percent="<%= percent %>">
           </div>
         </div>
