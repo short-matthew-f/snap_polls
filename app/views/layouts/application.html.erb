@@ -7,7 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class="notifications">
+  <header class="clearfix">
+    <span class="pull-left">
+      Snap Polls
+    </span>
+    
+    <ul class="pull-right">
+      <% if current_user && current_user.instructor?%>
+        <li>
+          <%= link_to "Make A Poll", new_poll_url %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to "Active Polls", active_polls_url %>
+      </li>
+      <li>
+        <%= link_to "Completed Polls", completed_polls_url %>
+      </li>
+      <% if current_user %>
+        <li>
+          <%= link_to "Sign Out", destroy_user_session_url, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Sign In", new_user_session_url %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_user_registration_url %>
+        </li>      
+      <% end %>
+    </ul>
+  </header>
+  
+  <section class="notifications">
     <% if notice %>
       <p class="notice">
         <%= notice %>
@@ -18,7 +50,7 @@
         <%= alert %>
       </p>
     <% end %>
-  </header>
+  </section>
   
   <main>
     <%= yield %>
