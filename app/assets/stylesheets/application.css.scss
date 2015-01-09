@@ -67,8 +67,8 @@ header {
 }
 
 section.notifications {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(10);
+  @include shift(1);
   
   p {
     padding: 8px 16px;
@@ -81,8 +81,8 @@ section.notifications {
 }
 
 main {
-  @include span-columns(8);
-  @include shift(2);
+  @include span-columns(10);
+  @include shift(1);
 }
 
 button {
