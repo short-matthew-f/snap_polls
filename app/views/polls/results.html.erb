@@ -10,6 +10,11 @@
   <section class="results">
     <h2>
       <%= @poll.question %>
+      <% if @poll.tag_list.any? %>
+        <small class="tag-list">
+          [Tags: <%= @poll.tag_list. join(', ') %>]
+        </small>
+      <% end %>
     </h2>
     
     <% @responses.each do |response| %>

@@ -4,6 +4,11 @@
     <%= p.text_field :question, autofocus: true %>
   </fieldset>
   
+  <fieldset class="tags">
+    <%= p.label :tag_list, "Topics (seperated by commas)" %>
+    <%= p.text_field :tag_list %>
+  </fieldset>
+  
   <%= p.fields_for :responses do |a| %>
     <div class="responses">
       <fieldset class="response">

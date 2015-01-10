@@ -10,6 +10,7 @@ class PollsController < ApplicationController
   
   def create    
     @poll = Poll.new(poll_params)
+    @poll.tag_list.map! &:downcase
     
     if @poll.save
       redirect_to @poll
@@ -51,6 +52,6 @@ class PollsController < ApplicationController
   private
   
   def poll_params
-    params.require(:poll).permit( :question, responses_attributes: [:content] )
+    params.require(:poll).permit( :question, :tag_list, responses_attributes: [:content] )
   end  
 end

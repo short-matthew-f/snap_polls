@@ -10,6 +10,8 @@
 #
 
 class Poll < ActiveRecord::Base
+  acts_as_taggable
+  
   has_many :responses
   has_many :votes, through: :responses
   

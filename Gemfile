@@ -17,6 +17,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'cancancan'
 
+gem 'acts-as-taggable-on'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
