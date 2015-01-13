@@ -1,3 +1,5 @@
 <% @polls.each do |poll| %>
-  <%= link_to poll.question, poll, class: 'button full-width' %>
+  <%= link_to poll, class: 'button full-width' do %>
+    <%= poll.question %> <small class="vote-count"> <%= pluralize poll.votes.count, "vote" %></small>
+  <% end %>
 <% end %>
